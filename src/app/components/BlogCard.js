@@ -1,6 +1,8 @@
 // src/app/components/BlogCard.js - BlogCard Component
 "use client";
 
+import Image from 'next/image';
+
 export default function BlogCard({ blog, onClick }) {
   return (
     <div 
@@ -10,10 +12,11 @@ export default function BlogCard({ blog, onClick }) {
     >
       {/* Blog Image */}
       <div className="relative" style={{ height: '50%' }}>
-        <img
+        <Image
           src={blog.image}
           alt={blog.title}
-          className="w-full h-full object-cover"
+          layout="fill"
+          objectFit="cover"
         />
       </div>
       {/* Blog Content */}

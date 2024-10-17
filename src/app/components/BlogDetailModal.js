@@ -1,19 +1,21 @@
 "use client";
 
+import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { useThemeLanguage } from '@/app/context/ThemeLanguageContext';
 import { useEffect, useState } from 'react';
 
 export default function BlogDetailModal({ blog, onClose }) {
-  if (!blog) return null;
-
   const { t } = useTranslation('common');
   const { theme, language } = useThemeLanguage();
   const [animationClass, setAnimationClass] = useState('');
 
   useEffect(() => {
+    if (!blog) return;
     setAnimationClass('animate-slideIn');
-  }, []);
+  }, [blog]);
+
+  if (!blog) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -29,9 +31,11 @@ export default function BlogDetailModal({ blog, onClose }) {
         </div>
         
         {blog.image && (
-          <img
+          <Image
             src={blog.image}
             alt={blog.title}
+            width={800}
+            height={400}
             className="w-full h-48 object-cover mb-4 rounded-lg shadow-md"
           />
         )}
