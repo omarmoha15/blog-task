@@ -2,12 +2,6 @@ import { readJSONFile, writeJSONFile } from '@/utils/fileOperations';
 import fs from 'fs';
 import path from 'path';
 
-export const config = {
-  api: {
-    bodyParser: false, // Disable Next.js body parsing so we can handle it manually
-  },
-};
-
 // Helper function to get buffer data from incoming request
 async function getBufferData(req) {
   const chunks = [];
